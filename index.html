@@ -30,7 +30,8 @@
     }
 
     .fade-in-text {
-      font-size: 2.5rem;
+      font-size: 3rem; /* Increased text size */
+      font-weight: bold; /* Made text bold */
       color: #ff4d4d;
       opacity: 0;
       animation: fadeInText 3s ease-in forwards;
@@ -46,17 +47,18 @@
     }
 
     .valentine-button {
-      background: linear-gradient(145deg, #ff4d4d, #ff1a1a); /* Gradient for a 3D effect */
+      background: linear-gradient(145deg, #ff4d4d, #ff1a1a);
       color: white;
       border: none;
       padding: 20px 40px;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      font-weight: bold;
       border-radius: 10px;
       cursor: pointer;
       margin: 10px;
       width: 300px;
-      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* Shadow for 3D effect */
-      transition: all 0.2s ease; /* Smooth transition */
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3);
+      transition: all 0.2s ease;
     }
 
     .valentine-button:focus {
@@ -64,13 +66,13 @@
     }
 
     .valentine-button:hover {
-      transform: translateY(-5px); /* Slight lift on hover */
-      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.4), -4px -8px 16px rgba(255, 255, 255, 0.4); /* Stronger shadow on hover */
+      transform: translateY(-5px);
+      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.4), -4px -8px 16px rgba(255, 255, 255, 0.4);
     }
 
     .valentine-button:active {
-      transform: translateY(2px); /* Button presses down on click */
-      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(255, 255, 255, 0.2); /* Lighter shadow when clicked */
+      transform: translateY(2px);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(255, 255, 255, 0.2);
     }
 
     .balloon {

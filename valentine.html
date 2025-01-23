@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #ffe6e6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 50px;
+      color: #ff4d4d;
+      font-size: 3rem;
+    }
+
+    .images-container {
+      margin: 20px 0;
+    }
+
+    img {
+      width: 150px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      animation: bounce 2s infinite;
+      /* You can try fade, zoom, or slide instead of bounce */
+    }
+
+    .button-container {
+      margin: 30px 0;
+    }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #ff4d4d;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background-color: #ff6666;
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      animation: float 5s ease-in infinite;
+    }
+
+    /* Bounce Animation */
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+
+    /* Fade-In Animation */
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Zoom-In Animation */
+    @keyframes zoom {
+      from {
+        transform: scale(0.5);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    /* Slide-In Animation */
+    @keyframes slide {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you be my Valentine?</h1>
+
+  <div class="images-container">
+    <img src="https://via.placeholder.com/150/FFB6C1" alt="Picture 1">
+    <img src="https://via.placeholder.com/150/FFC0CB" alt="Picture 2">
+    <img src="https://via.placeholder.com/150/FF69B4" alt="Picture 3">
+  </div>
+
+  <div class="button-container">
+    <button onclick="showBalloons()">Yes</button>
+    <button onclick="showBalloons()">Absolutely</button>
+  </div>
+
+  <script>
+    function showBalloons() {
+      for (let i = 0; i < 10; i++) {
+        const balloon = document.createElement('img');
+        balloon.src = 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Red_balloon_icon.png'; // Use your own balloon image if you want
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDuration = Math.random() * 2 + 3 + 's';
+        document.body.appendChild(balloon);
+
+        // Remove balloon after animation
+        balloon.addEventListener('animationend', () => {
+          balloon.remove();
+        });
+      }
+    }
+  </script>
+</body>
+</html>

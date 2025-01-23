@@ -19,10 +19,7 @@
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 20px;
-      opacity: 0; /* Initially hidden */
-      animation: fadeInImagesAround 4s ease-in forwards;
-      animation-delay: 3s; /* Wait for the text to finish fading */
+      margin-bottom: 30px;
     }
 
     .images-container img {
@@ -33,27 +30,27 @@
     }
 
     .images-container img:nth-child(1) {
-      animation-delay: 3.5s;
+      animation-delay: 0s;
     }
 
     .images-container img:nth-child(2) {
-      animation-delay: 4s;
+      animation-delay: 0.5s;
     }
 
     .images-container img:nth-child(3) {
-      animation-delay: 4.5s;
+      animation-delay: 1s;
     }
 
     .images-container img:nth-child(4) {
-      animation-delay: 5s;
+      animation-delay: 1.5s;
     }
 
     .images-container img:nth-child(5) {
-      animation-delay: 5.5s;
+      animation-delay: 2s;
     }
 
     .images-container img:nth-child(6) {
-      animation-delay: 6s;
+      animation-delay: 2.5s;
     }
 
     .fade-in-text {
@@ -61,22 +58,21 @@
       color: #ff4d4d;
       opacity: 0; /* Start fully transparent */
       animation: fadeInText 3s ease-in forwards; /* Fade-in animation for text */
+      animation-delay: 2.5s; /* Start text animation after images fade in */
+      margin-bottom: 30px;
     }
 
     .button-container {
-      margin-top: 30px;
-      opacity: 0;
-      animation: fadeInButtons 3s ease-in forwards;
-      animation-delay: 6s; /* Wait for the text and images to finish fading */
+      margin-top: 20px;
     }
 
     .valentine-button {
       background-color: #ff4d4d;
       color: white;
       border: none;
-      padding: 15px 30px; /* Larger buttons */
-      font-size: 1.5rem;
-      border-radius: 10px;
+      padding: 15px 30px; /* Increased size */
+      font-size: 1.5rem; /* Larger text */
+      border-radius: 10px; /* Slightly rounded corners */
       cursor: pointer;
       margin: 10px;
       position: relative;
@@ -117,24 +113,6 @@
       }
     }
 
-    @keyframes fadeInImagesAround {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeInButtons {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
     @keyframes flyUp {
       0% {
         transform: translateY(100%);
@@ -148,10 +126,6 @@
   </style>
 </head>
 <body>
-  <div class="fade-in-text">
-    Will you be my Valentine? ❤️
-  </div>
-
   <div class="images-container">
     <img src="iceland.png" alt="Picture 1">
     <img src="sd.png" alt="Picture 2">
@@ -161,9 +135,12 @@
     <img src="snacksinbed.png" alt="Picture 6">
   </div>
 
+  <div class="fade-in-text">
+    Will you be my Valentine? ❤️
+  </div>
+
   <div class="button-container">
     <button class="valentine-button" onclick="createBalloons(event)">Yes!</button>
-    <button class="valentine-button" onclick="createBalloons(event)">Of course!</button>
   </div>
 
   <script>

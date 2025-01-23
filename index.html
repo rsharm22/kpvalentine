@@ -11,6 +11,7 @@
       text-align: center;
       margin: 0;
       padding: 50px;
+      overflow: hidden; /* Prevent scrollbars when balloons fly out */
     }
 
     .images-container {
@@ -69,9 +70,9 @@
       background-color: #ff4d4d;
       color: white;
       border: none;
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      border-radius: 5px;
+      padding: 15px 30px; /* Increased size */
+      font-size: 1.5rem; /* Larger text */
+      border-radius: 10px; /* Slightly rounded corners */
       cursor: pointer;
       margin: 10px;
       position: relative;
@@ -85,8 +86,8 @@
     /* Balloon animation */
     .balloon {
       position: absolute;
-      font-size: 1.5rem;
-      animation: flyUp 3s ease-in-out forwards;
+      font-size: 2rem;
+      animation: flyUp 4s ease-in-out forwards;
       pointer-events: none;
     }
 
@@ -114,11 +115,11 @@
 
     @keyframes flyUp {
       0% {
-        transform: translateY(0);
+        transform: translateY(100%);
         opacity: 1;
       }
       100% {
-        transform: translateY(-300px);
+        transform: translateY(-200%);
         opacity: 0;
       }
     }
@@ -140,27 +141,41 @@
 
   <div class="button-container">
     <button class="valentine-button" onclick="createBalloons(event)">Yes!</button>
+    <button class="valentine-button" onclick="createBalloons(event)">Of course!</button>
   </div>
 
   <script>
     function createBalloons(event) {
-      const button = event.target;
-      const rect = button.getBoundingClientRect();
-      const container = document.createElement('div');
-      container.style.position = 'relative';
+      // Create a container for balloons
+      const balloonContainer = document.createElement('div');
+      balloonContainer.style.position = 'absolute';
+      balloonContainer.style.top = '0';
+      balloonContainer.style.left = '0';
+      balloonContainer.style.width = '100%';
+      balloonContainer.style.height = '100%';
+      balloonContainer.style.overflow = 'hidden';
+      balloonContainer.style.pointerEvents = 'none';
 
-      // Create 5 balloons
-      for (let i = 0; i < 5; i++) {
+      document.body.appendChild(balloonContainer);
+
+      // Create 50 balloons
+      for (let i = 0; i < 50; i++) {
         const balloon = document.createElement('div');
         balloon.classList.add('balloon');
-        balloon.style.left = `${Math.random() * 100}%`;
+        balloon.style.left = `${Math.random() * 100}%`; // Random horizontal position
+        balloon.style.bottom = '0'; // Start at the bottom
         balloon.style.color = ['#FF69B4', '#FFB6C1', '#FF4D4D'][Math.floor(Math.random() * 3)];
         balloon.innerText = '🎈';
-        button.appendChild(balloon);
+        balloonContainer.appendChild(balloon);
 
         // Remove balloon after animation
         balloon.addEventListener('animationend', () => balloon.remove());
       }
+
+      // Remove balloon container after all animations are done
+      setTimeout(() => {
+        balloonContainer.remove();
+      }, 4000);
     }
   </script>
 </body>

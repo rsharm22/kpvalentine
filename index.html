@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Valentine Page</title>
   <style>
+    /* Your styles are unchanged */
     body {
       font-family: Arial, sans-serif;
       background-color: #ffe6e6;
@@ -140,7 +141,7 @@
   </div>
 
   <div class="button-container">
-    <button class="valentine-button" onclick="createBalloons(event)">Yes!</button>
+    <button class="valentine-button" onclick="handleButtonClick()">Yes!</button>
   </div>
   
   <audio id="valentine-music" src="The Isley Brothers - Between the Sheets (Official Audio).mp3"></audio>
@@ -149,14 +150,13 @@
     function handleButtonClick() {
       // Play music
       const music = document.getElementById('valentine-music');
-      music.play();
+      music.play().catch((error) => console.error("Music playback error:", error));
 
       // Create balloons
       createBalloons();
     }
 
-  <script>
-    function createBalloons(event) {
+    function createBalloons() {
       const balloonContainer = document.createElement('div');
       balloonContainer.style.position = 'absolute';
       balloonContainer.style.top = '0';

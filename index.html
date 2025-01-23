@@ -10,76 +10,84 @@
       background-color: #ffe6e6;
       text-align: center;
       margin: 0;
-      padding: 50px;
-      overflow: hidden; /* Prevent scrollbars when balloons fly out */
+      padding: 0;
+      overflow: hidden; /* Prevent scrollbars */
+      height: 100vh; /* Ensure body takes up the full height */
     }
 
     .images-container {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       gap: 20px;
       flex-wrap: wrap;
-      margin-top: 20px;
       position: absolute;
-      top: 0; /* Position images at the top */
-      left: 50%;
-      transform: translateX(-50%); /* Center images horizontally */
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
       opacity: 0; /* Initially hidden */
-      animation: fadeInImagesAround 4s ease-in forwards;
-      animation-delay: 3s; /* Wait for the text to finish fading */
+      animation: fadeInImages 6s ease-in forwards; /* Fade-in animation for images */
     }
 
     .images-container img {
-      width: 200px; /* Make images larger */
+      width: 18vw; /* Make images large */
       height: auto;
       opacity: 0; /* Start fully transparent */
-      animation: fadeInImages 4s ease-in forwards; /* Fade-in animation for images */
+      animation: fadeInImages 6s ease-in forwards; /* Fade-in animation for images */
     }
 
     .images-container img:nth-child(1) {
-      animation-delay: 3.5s;
+      animation-delay: 0s;
     }
 
     .images-container img:nth-child(2) {
-      animation-delay: 4s;
+      animation-delay: 1s;
     }
 
     .images-container img:nth-child(3) {
-      animation-delay: 4.5s;
+      animation-delay: 2s;
     }
 
     .images-container img:nth-child(4) {
-      animation-delay: 5s;
+      animation-delay: 3s;
     }
 
     .images-container img:nth-child(5) {
-      animation-delay: 5.5s;
+      animation-delay: 4s;
     }
 
     .images-container img:nth-child(6) {
-      animation-delay: 6s;
+      animation-delay: 5s;
     }
 
     .fade-in-text {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #ff4d4d;
-      opacity: 0; /* Start fully transparent */
-      animation: fadeInText 3s ease-in forwards; /* Fade-in animation for text */
-      margin-top: 250px; /* Push text below the images */
+      opacity: 0;
+      animation: fadeInText 3s ease-in forwards;
+      animation-delay: 6s; /* Wait for images to finish fading */
+      position: absolute;
+      top: 40%; /* Position text in the center */
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .button-container {
       margin-top: 30px;
       opacity: 0;
       animation: fadeInButtons 3s ease-in forwards;
-      animation-delay: 6s; /* Wait for the text and images to finish fading */
+      animation-delay: 9s; /* Wait for the text to finish fading */
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .valentine-button {
       background-color: #ff4d4d;
       color: white;
       border: none;
-      padding: 20px 40px; /* Wider button */
+      padding: 20px 50px; /* Make button larger */
       font-size: 1.5rem;
       border-radius: 10px;
       cursor: pointer;
@@ -119,15 +127,6 @@
       100% {
         opacity: 1;
         transform: translateY(0); /* Reset position */
-      }
-    }
-
-    @keyframes fadeInImagesAround {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
       }
     }
 

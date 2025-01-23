@@ -3,138 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine</title>
+  <title>Valentine Page</title>
   <style>
     body {
-      text-align: center;
-      background-color: #ffe6e6;
       font-family: Arial, sans-serif;
+      background-color: #ffe6e6;
+      text-align: center;
       margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      margin-top: 50px;
-      color: #ff4d4d;
-      font-size: 3rem;
+      padding: 50px;
     }
 
     .images-container {
-      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
 
-    img {
+    .images-container img {
       width: 150px;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-      animation: bounce 2s infinite;
-      /* You can try fade, zoom, or slide instead of bounce */
+      height: auto;
+      opacity: 0; /* Start fully transparent */
+      animation: fadeInImages 4s ease-in forwards; /* Fade-in animation for images */
     }
 
-    .button-container {
-      margin: 30px 0;
+    /* Apply staggered fade-in effect to images */
+    .images-container img:nth-child(1) {
+      animation-delay: 0s;
     }
 
-    button {
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      margin: 10px;
-      background-color: #ff4d4d;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    .images-container img:nth-child(2) {
+      animation-delay: 0.5s;
     }
 
-    button:hover {
-      background-color: #ff6666;
+    .images-container img:nth-child(3) {
+      animation-delay: 1s;
     }
 
-    .balloon {
-      position: fixed;
-      bottom: -100px;
-      animation: float 5s ease-in infinite;
+    .images-container img:nth-child(4) {
+      animation-delay: 1.5s;
     }
 
-    /* Bounce Animation */
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-30px);
-      }
-      60% {
-        transform: translateY(-15px);
-      }
+    .images-container img:nth-child(5) {
+      animation-delay: 2s;
     }
 
-    /* Fade-In Animation */
-    @keyframes fade {
-      from {
+    .images-container img:nth-child(6) {
+      animation-delay: 2.5s;
+    }
+
+    .fade-in-text {
+      font-size: 2.5rem;
+      color: #ff4d4d;
+      opacity: 0; /* Start fully transparent */
+      animation: fadeInText 3s ease-in forwards; /* Fade-in animation for text */
+      animation-delay: 2s; /* Start text animation after 2 seconds */
+    }
+
+    @keyframes fadeInImages {
+      0% {
         opacity: 0;
+        transform: translateY(20px); /* Slight slide-up effect */
       }
-      to {
+      100% {
         opacity: 1;
+        transform: translateY(0); /* Reset position */
       }
     }
 
-    /* Zoom-In Animation */
-    @keyframes zoom {
-      from {
-        transform: scale(0.5);
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(20px); /* Slight slide-up effect */
       }
-      to {
-        transform: scale(1);
-      }
-    }
-
-    /* Slide-In Animation */
-    @keyframes slide {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(0);
+      100% {
+        opacity: 1;
+        transform: translateY(0); /* Reset position */
       }
     }
   </style>
 </head>
 <body>
-  <h1>Will you be my Valentine?</h1>
-
   <div class="images-container">
     <img src="iceland.png" alt="Picture 1">
     <img src="sd.png" alt="Picture 2">
     <img src="blacksandbeach.png" alt="Picture 3">
-    <img src="nyc.png" alt="Picture 3">
-    <img src="cookie.png" alt="Picture 3">
-    <img src="snacksinbed.png" alt="Picture 3">
+    <img src="nyc.png" alt="Picture 4">
+    <img src="cookie.png" alt="Picture 5">
+    <img src="snacksinbed.png" alt="Picture 6">
   </div>
 
-  <div class="button-container">
-    <button onclick="showBalloons()">Yes</button>
-    <button onclick="showBalloons()">Absolutely</button>
+  <div class="fade-in-text">
+    Will you be my Valentine? ❤️
   </div>
-
-  <script>
-    function showBalloons() {
-      for (let i = 0; i < 10; i++) {
-        const balloon = document.createElement('img');
-        balloon.src = 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Red_balloon_icon.png'; // Use your own balloon image if you want
-        balloon.className = 'balloon';
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDuration = Math.random() * 2 + 3 + 's';
-        document.body.appendChild(balloon);
-
-        // Remove balloon after animation
-        balloon.addEventListener('animationend', () => {
-          balloon.remove();
-        });
-      }
-    }
-  </script>
 </body>
 </html>

@@ -11,83 +11,68 @@
       text-align: center;
       margin: 0;
       padding: 50px;
-      overflow: hidden; /* Prevent scrollbars when balloons fly out */
+      overflow: hidden;
     }
 
     .images-container {
       display: flex;
       justify-content: center;
-      gap: 20px; /* Increased gap between images */
+      gap: 20px;
       flex-wrap: wrap;
       margin-bottom: 30px;
     }
 
     .images-container img {
-      width: 200px; /* Increased image size */
+      width: 200px;
       height: auto;
-      opacity: 0; /* Start fully transparent */
-      animation: fadeInImages 4s ease-in forwards; /* Fade-in animation for images */
-    }
-
-    .images-container img:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .images-container img:nth-child(2) {
-      animation-delay: 0.5s;
-    }
-
-    .images-container img:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    .images-container img:nth-child(4) {
-      animation-delay: 1.5s;
-    }
-
-    .images-container img:nth-child(5) {
-      animation-delay: 2s;
-    }
-
-    .images-container img:nth-child(6) {
-      animation-delay: 2.5s;
+      opacity: 0;
+      animation: fadeInImages 4s ease-in forwards;
     }
 
     .fade-in-text {
       font-size: 2.5rem;
       color: #ff4d4d;
-      opacity: 0; /* Start fully transparent */
-      animation: fadeInText 3s ease-in forwards; /* Fade-in animation for text */
-      animation-delay: 2.5s; /* Start text animation after images fade in */
+      opacity: 0;
+      animation: fadeInText 3s ease-in forwards;
+      animation-delay: 2.5s;
       margin-bottom: 30px;
     }
 
     .button-container {
       margin-top: 20px;
-      opacity: 0; /* Start the button hidden */
-      animation: fadeInButton 3s ease-in forwards; /* Fade-in animation for button */
-      animation-delay: 5s; /* Delay button appearance until after text */
+      opacity: 0;
+      animation: fadeInButton 3s ease-in forwards;
+      animation-delay: 5s;
     }
 
     .valentine-button {
-      background-color: #ff4d4d;
+      background: linear-gradient(145deg, #ff4d4d, #ff1a1a); /* Gradient for a 3D effect */
       color: white;
       border: none;
-      padding: 20px 40px; /* Increased size for a wider button */
-      font-size: 2rem; /* Larger text */
-      border-radius: 10px; /* Slightly rounded corners */
+      padding: 20px 40px;
+      font-size: 2rem;
+      border-radius: 10px;
       cursor: pointer;
       margin: 10px;
-      position: relative;
-      overflow: hidden;
-      width: 300px; /* Fixed width for the button */
+      width: 300px;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* Shadow for 3D effect */
+      transition: all 0.2s ease; /* Smooth transition */
     }
 
     .valentine-button:focus {
       outline: none;
     }
 
-    /* Balloon animation */
+    .valentine-button:hover {
+      transform: translateY(-5px); /* Slight lift on hover */
+      box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.4), -4px -8px 16px rgba(255, 255, 255, 0.4); /* Stronger shadow on hover */
+    }
+
+    .valentine-button:active {
+      transform: translateY(2px); /* Button presses down on click */
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(255, 255, 255, 0.2); /* Lighter shadow when clicked */
+    }
+
     .balloon {
       position: absolute;
       font-size: 2rem;
@@ -98,31 +83,31 @@
     @keyframes fadeInImages {
       0% {
         opacity: 0;
-        transform: translateY(20px); /* Slight slide-up effect */
+        transform: translateY(20px);
       }
       100% {
         opacity: 1;
-        transform: translateY(0); /* Reset position */
+        transform: translateY(0);
       }
     }
 
     @keyframes fadeInText {
       0% {
         opacity: 0;
-        transform: translateY(20px); /* Slight slide-up effect */
+        transform: translateY(20px);
       }
       100% {
         opacity: 1;
-        transform: translateY(0); /* Reset position */
+        transform: translateY(0);
       }
     }
 
     @keyframes fadeInButton {
       0% {
-        opacity: 0; /* Start hidden */
+        opacity: 0;
       }
       100% {
-        opacity: 1; /* Fade in fully */
+        opacity: 1;
       }
     }
 
@@ -158,7 +143,6 @@
 
   <script>
     function createBalloons(event) {
-      // Create a container for balloons
       const balloonContainer = document.createElement('div');
       balloonContainer.style.position = 'absolute';
       balloonContainer.style.top = '0';
@@ -170,21 +154,18 @@
 
       document.body.appendChild(balloonContainer);
 
-      // Create 50 balloons
       for (let i = 0; i < 50; i++) {
         const balloon = document.createElement('div');
         balloon.classList.add('balloon');
-        balloon.style.left = `${Math.random() * 100}%`; // Random horizontal position
-        balloon.style.bottom = '0'; // Start at the bottom
+        balloon.style.left = `${Math.random() * 100}%`;
+        balloon.style.bottom = '0';
         balloon.style.color = ['#FF69B4', '#FFB6C1', '#FF4D4D'][Math.floor(Math.random() * 3)];
         balloon.innerText = '🎈';
         balloonContainer.appendChild(balloon);
 
-        // Remove balloon after animation
         balloon.addEventListener('animationend', () => balloon.remove());
       }
 
-      // Remove balloon container after all animations are done
       setTimeout(() => {
         balloonContainer.remove();
       }, 4000);

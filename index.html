@@ -17,13 +17,13 @@
     .images-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 20px; /* Increased gap between images */
       flex-wrap: wrap;
       margin-bottom: 30px;
     }
 
     .images-container img {
-      width: 150px;
+      width: 200px; /* Increased image size */
       height: auto;
       opacity: 0; /* Start fully transparent */
       animation: fadeInImages 4s ease-in forwards; /* Fade-in animation for images */
@@ -64,14 +64,17 @@
 
     .button-container {
       margin-top: 20px;
+      opacity: 0; /* Start the button hidden */
+      animation: fadeInButton 3s ease-in forwards; /* Fade-in animation for button */
+      animation-delay: 5s; /* Delay button appearance until after text */
     }
 
     .valentine-button {
       background-color: #ff4d4d;
       color: white;
       border: none;
-      padding: 15px 30px; /* Increased size */
-      font-size: 1.5rem; /* Larger text */
+      padding: 20px 40px; /* Increased size for a wider button */
+      font-size: 1.8rem; /* Larger text */
       border-radius: 10px; /* Slightly rounded corners */
       cursor: pointer;
       margin: 10px;
@@ -113,6 +116,15 @@
       }
     }
 
+    @keyframes fadeInButton {
+      0% {
+        opacity: 0; /* Start hidden */
+      }
+      100% {
+        opacity: 1; /* Fade in fully */
+      }
+    }
+
     @keyframes flyUp {
       0% {
         transform: translateY(100%);
@@ -141,6 +153,7 @@
 
   <div class="button-container">
     <button class="valentine-button" onclick="createBalloons(event)">Yes!</button>
+    <button class="valentine-button" onclick="createBalloons(event)">Of course!</button>
   </div>
 
   <script>

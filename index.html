@@ -17,40 +17,47 @@
     .images-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      margin-top: 20px;
+      position: absolute;
+      top: 0; /* Position images at the top */
+      left: 50%;
+      transform: translateX(-50%); /* Center images horizontally */
+      opacity: 0; /* Initially hidden */
+      animation: fadeInImagesAround 4s ease-in forwards;
+      animation-delay: 3s; /* Wait for the text to finish fading */
     }
 
     .images-container img {
-      width: 150px;
+      width: 200px; /* Make images larger */
       height: auto;
       opacity: 0; /* Start fully transparent */
       animation: fadeInImages 4s ease-in forwards; /* Fade-in animation for images */
     }
 
     .images-container img:nth-child(1) {
-      animation-delay: 0s;
+      animation-delay: 3.5s;
     }
 
     .images-container img:nth-child(2) {
-      animation-delay: 0.5s;
+      animation-delay: 4s;
     }
 
     .images-container img:nth-child(3) {
-      animation-delay: 1s;
+      animation-delay: 4.5s;
     }
 
     .images-container img:nth-child(4) {
-      animation-delay: 1.5s;
+      animation-delay: 5s;
     }
 
     .images-container img:nth-child(5) {
-      animation-delay: 2s;
+      animation-delay: 5.5s;
     }
 
     .images-container img:nth-child(6) {
-      animation-delay: 2.5s;
+      animation-delay: 6s;
     }
 
     .fade-in-text {
@@ -58,21 +65,23 @@
       color: #ff4d4d;
       opacity: 0; /* Start fully transparent */
       animation: fadeInText 3s ease-in forwards; /* Fade-in animation for text */
-      animation-delay: 2.5s; /* Start text animation after images fade in */
-      margin-bottom: 30px;
+      margin-top: 250px; /* Push text below the images */
     }
 
     .button-container {
-      margin-top: 20px;
+      margin-top: 30px;
+      opacity: 0;
+      animation: fadeInButtons 3s ease-in forwards;
+      animation-delay: 6s; /* Wait for the text and images to finish fading */
     }
 
     .valentine-button {
       background-color: #ff4d4d;
       color: white;
       border: none;
-      padding: 15px 30px; /* Increased size */
-      font-size: 1.5rem; /* Larger text */
-      border-radius: 10px; /* Slightly rounded corners */
+      padding: 20px 40px; /* Wider button */
+      font-size: 1.5rem;
+      border-radius: 10px;
       cursor: pointer;
       margin: 10px;
       position: relative;
@@ -110,6 +119,24 @@
       100% {
         opacity: 1;
         transform: translateY(0); /* Reset position */
+      }
+    }
+
+    @keyframes fadeInImagesAround {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInButtons {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
 
